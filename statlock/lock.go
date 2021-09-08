@@ -1,4 +1,4 @@
-package go_file_statlock
+package statlock
 
 import (
 	"fmt"

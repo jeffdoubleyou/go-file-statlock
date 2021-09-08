@@ -58,7 +58,7 @@ func (l *Lock) Lock() (bool, error) {
 func (l *Lock) Unlock() (bool, error) {
 	l.Status = StatusRelease
 	unlockAttempts := 0
-	maxAttempts := 10
+	maxAttempts := 25
 	for l.Status == StatusRelease && unlockAttempts < maxAttempts {
 		time.Sleep(time.Duration(500) * time.Millisecond)
 		unlockAttempts++

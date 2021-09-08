@@ -10,7 +10,7 @@ Normal file locking isn't supported on NFS and I could not find any suitable lib
 ## Usage
 
 ```
-go get github.com/jeffdoubleyou/go-file-statlock
+go get github.com/jeffdoubleyou/go-file-statlock/statlock
 ```
 
 ```

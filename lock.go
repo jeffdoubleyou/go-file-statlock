@@ -1,4 +1,4 @@
-package statlock
+package go_file_statlock
 
 import (
 	"fmt"
@@ -37,7 +37,6 @@ func NewLock(path string, seconds int, maxWaitInterval ...int) *Lock {
 	waitInterval := 10
 	if len(maxWaitInterval) == 1 {
 		waitInterval = maxWaitInterval[0]
-		fmt.Printf("Setting max wait interval to %d", waitInterval)
 	}
 
 	return &Lock{
@@ -115,14 +114,11 @@ func (l *Lock) keepLock() {
 		}
 	}
 
-	fmt.Printf("Exited keep lock loop with status: %d\n", l.Status)
 	if _, err := os.Stat(l.Path); err == nil {
-		fmt.Printf("Lock file '%s' exists\n", l.Path)
 		if err := os.Remove(l.Path); err != nil {
 			fmt.Printf("could not remove lock file '%s': %s\n", l.Path, err.Error())
 			l.Status = StatusOrphaned
 		} else {
-			fmt.Printf("Removed lock file succesfully\n")
 			l.Status = StatusUnlocked
 		}
 	} else if os.IsNotExist(err) { // This could occur if another process is waiting for a lock and acquires it while we are unlocking

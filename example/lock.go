@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/jeffdoubleyou/go-file-statlock"
+
+	"github.com/jeffdoubleyou/go-file-statlock/statlock"
 )
 
 func main() {
